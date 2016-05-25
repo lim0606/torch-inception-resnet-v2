@@ -10,6 +10,8 @@ I uploaded the torch model definition and the training script I used as PR in he
 
 2. log comparisions
 
+3. tools to parse log
+
 # Notes
 
 1. There seems typos in the paper (http://arxiv.org/abs/1602.07261)
@@ -21,6 +23,12 @@ I uploaded the torch model definition and the training script I used as PR in he
   * Since weights are usually normalized with unit-norm, the range of output values of linear (conv) layer becomes approximately (-1, 1) (if the output values of previous layers are normalized properly with batch-normalization)
   * At the initial stages in training, the addition of some-what random values with the range of (-1, 1) (from residual path) instabilizes the output of residual layer; therefore, training does not go well. 
   * The batch-normalizing the final output of residual layer befure relu (and after identitiy + residual) seems not stabilize the output activities since the large contributions of the activies of residual path (see, https://github.com/revilokeb/inception_resnetv2_caffe)
+
+3. I used the custom learning rate scheduling since 1) the batch size information wasn't provided in the inception v4 paper and 2) the custom lr scheduling has been worked well for differnt types of imagenet classifier models. 
+  * What-so-called `step` style learning rate scheduling is used with sgd
+  * This lr scheduling and its variant with different stepsize have been work properly with googlenet (inception-v1) and googlenet-bn (inception-v2)   * As far as the regularization of the inception-resnet-v2 are properly applied, the learning rate scheduling is expected to be applicable with inception-resnet-v2. 
+
+4. The momentum for SGD was set to 0.4737, which is the equivalent value on torch style sgd for the 0.9 momentum on caffe style sgd (see, https://github.com/KaimingHe/deep-residual-networks).
 
 
 # References 
