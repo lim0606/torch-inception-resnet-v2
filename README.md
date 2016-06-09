@@ -49,7 +49,7 @@ Because of limited computational resources we have, we tried only few training c
 0. As mentioned in the inception-v4 paper (section 3.3.), scaling down by multiplying a scalar (0.1 or somewhat equivalent) to the last neuronal activities in residual path (the activities of linear conv of residual path) for residual layer seems very important to avoid explosion.
   * Since weights are usually normalized with unit-norm, the range of output values of linear (conv) layer becomes approximately (-1, 1) (if the output values of previous layers are normalized properly with batch-normalization)
   * At the initial stages in training, the addition of some-what random values with the range of (-1, 1) (from residual path) instabilizes the output of residual layer; therefore, training does not go well. 
-  * The batch-normalizing the final output of residual layer befure relu (and after identitiy + residual) seems not stabilize the output activities since the large contributions of the activies of residual path (see, https://github.com/revilokeb/inception_resnetv2_caffe)
+  * The batch-normalizing the final output of residual layer before relu (and after identitiy + residual) seems not stabilize the output activities since the large contributions of the activies of residual path (see, https://github.com/revilokeb/inception_resnetv2_caffe)
 
 0. I used the custom learning rate scheduling since 1) the batch size information wasn't provided in the inception v4 paper and 2) the custom lr scheduling has been worked well for differnt types of imagenet classifier models. 
   * So-called `step`-style learning rate scheduling is used with SGD 
@@ -57,7 +57,7 @@ Because of limited computational resources we have, we tried only few training c
   * As far as the regularization of the inception-resnet-v2 are properly applied, the learning rate scheduling is expected to be applicable with inception-resnet-v2. 
 
 0. The momentum for SGD was set to 0.4737, which is the equivalent value on torch style sgd for the 0.9 momentum on caffe style sgd (see, https://github.com/KaimingHe/deep-residual-networks).
-  * Based on this info, the base learning rate should set as `0.045 * 1.9 = 0.885`, but I just tried with `0.045`
+  * Based on this info, the base learning rate should set as `0.045 * 1.9 = 0.0885`, but I just tried with `0.045`
 
 0. Based on the comparison between the loss curve I got and the one in the paper, the effective batchsize in the original paper seems like 32.
   * Based on this guess, the equivalent setting for training should be with 1) `stepsize = 80076`, 2) `gamma = 0.94`, and 3) `nEpochs = 300` when `batchsize = 64`. (It will takes approximately 60 days with 2 Titan Xs)
