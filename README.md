@@ -2,14 +2,14 @@
 
 For personal interests, I and my friend Sunghun Kang (shuni@kaist.ac.kr) trained inception-resnet-v2 (http://arxiv.org/abs/1602.07261) from scratch based on torch, esp. facebook's training scripts (https://github.com/facebook/fb.resnet.torch)
 
-I uploaded the torch model definition and the training script I used as PR in here (https://github.com/facebook/fb.resnet.torch).
+I uploaded the torch model definition and the training script I used as PR in [here](https://github.com/facebook/fb.resnet.torch/pull/64).
 
 Because of limited computational resources we have, we tried only few training conditions. For someone who are interested in achieving the same performance in the paper, I added some notes we've learned throughout trials. Those might be helpful. 
 
 
 ## Requirements
 
-0. See, [[address to PR]]
+0. See, https://github.com/facebook/fb.resnet.torch/pull/64 
 
 
 ## Settings
@@ -63,6 +63,11 @@ Because of limited computational resources we have, we tried only few training c
   * Based on this guess, the equivalent setting for training should be with 1) `stepsize = 80076`, 2) `gamma = 0.94`, and 3) `nEpochs = 300` when `batchsize = 64`. (It will takes approximately 60 days with 2 Titan Xs)
   * Therefore, the decaying rate for lr of the learning rate scheduling I tried may be too fast.
 
+## Models
+
+0. For setting 1, see [Google Drive](https://drive.google.com/folderview?id=0By3GiE-Oc72rQlJSMVZ0Ri1pb1k&usp=sharing)
+
+0. For setting 2. trainingn is in progress
 
 ## References 
 0. http://arxiv.org/abs/1602.07261
