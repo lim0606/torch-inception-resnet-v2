@@ -34,8 +34,8 @@ Because of limited computational resources we have, we tried only few training c
 | Setting 2             | N/A         | N/A         |
 
 0. Training curves on ImageNet (solid lines: 1-crop top-1 error; dashed lines: 1-crop top-5 error):
-  * You can plot yourself based on the scripts in the `tools`
-	![Training curves]()
+  * You can plot yourself based on the scripts in the `tools/plot_log.py`
+	![Training curves](https://github.com/lim0606/torch-inception-resnet-v2/blob/master/figures/b64_s12800_i1801710.png)
 
 ## Notes
 
