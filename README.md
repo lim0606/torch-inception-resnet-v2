@@ -27,15 +27,17 @@ Because of limited computational resources we have, we tried only few training c
 
 0. 1-crop validation error on ImageNet (center 299x299 crop from resized image with 328x328): 
 
-#### Single-crop (299x299) validation error rate
-| Network               | Top-1 error | Top-5 error |
-| --------------------- | ----------- | ----------- |
-| Setting 1             | 24.407      | 7.407       |
-| Setting 2             | N/A         | N/A         |
+  1. Single-crop (299x299) validation error rate
 
-0. Training curves on ImageNet (solid lines: 1-crop top-1 error; dashed lines: 1-crop top-5 error):
-  * You can plot yourself based on the scripts in the `tools/plot_log.py`
-	![Training curves](https://github.com/lim0606/torch-inception-resnet-v2/blob/master/figures/b64_s12800_i1801710.png)
+    | Network               | Top-1 error | Top-5 error |
+    | --------------------- | ----------- | ----------- |
+    | Setting 1             | 24.407      | 7.407       |
+    | Setting 2             | N/A         | N/A         |
+
+  2. Training curves on ImageNet (solid lines: 1-crop top-1 error; dashed lines: 1-crop top-5 error):
+    * You can plot yourself based on the scripts in the `tools/plot_log.py`
+    
+    ![Training curves](https://github.com/lim0606/torch-inception-resnet-v2/blob/master/figures/b64_s12800_i1801710.png)
 
 ## Notes
 
