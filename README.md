@@ -14,11 +14,11 @@ Because of limited computational resources we have, we tried only few training c
 
 ## Settings
 
-0. SGD, `batchsize = 32 x 2 = 64`, and learning rate scheduling with step-style where `stepsize = 12800` and `gamma = 0.96`
+0. SGD w/ `momentum = 0.4737`, `batchsize = 32 x 2 = 64`, and learning rate scheduling with step-style where `stepsize = 12800` and `gamma = 0.96`
   * trained with Titan X x 2, each of which handles effective batchsize of 32 (this information matters since batch normalization in this script does not share their normalization constants). 
   * ended when `nEpochs = 90` (It took approximately 21 days. At least 300 epoches are required to match with the results in the original paper. See, note #5)
 
-0. SGD, `batchsize = 32 x 2 = 64`, and learning rate scheduling with step-style where `stepsize = 25600` and `gamma = 0.96`
+0. SGD w/ `momentum = 0.4737`, `batchsize = 32 x 2 = 64`, and learning rate scheduling with step-style where `stepsize = 25600` and `gamma = 0.96`
   * trained with Titan X x 2, each of which handles effective batchsize of 32. 
   * in progress.  
 
@@ -53,11 +53,12 @@ Because of limited computational resources we have, we tried only few training c
 
 0. I used the custom learning rate scheduling since 1) the batch size information wasn't provided in the inception v4 paper and 2) the custom lr scheduling has been worked well for differnt types of imagenet classifier models. 
   * So-called `step`-style learning rate scheduling is used with SGD 
-  * This lr scheduling and its variant with different stepsize have been work properly with googlenet (inception-v1) and googlenet-bn (inception-v2)  
+  * This lr scheduling and its variant with different stepsize have been work properly with googlenet (inception-v1) and [googlenet-bn](https://github.com/lim0606/caffe-googlenet-bn) (inception-v2)  
   * As far as the regularization of the inception-resnet-v2 are properly applied, the learning rate scheduling is expected to be applicable with inception-resnet-v2. 
 
-0. The momentum for SGD was set to 0.4737, which is the equivalent value on torch style sgd for the 0.9 momentum on caffe style sgd (see, https://github.com/KaimingHe/deep-residual-networks).
-  * Based on this info, the base learning rate should set as `0.045 * 1.9 = 0.0885`, but I just tried with `0.045`
+0. ~~The momentum for SGD was set to 0.4737, which is the equivalent value on torch style sgd for the 0.9 momentum on caffe style sgd (see, https://github.com/KaimingHe/deep-residual-networks).~~
+  * ~~Based on this info, the base learning rate should set as `0.045 * 1.9 = 0.0885`, but I just tried with `0.045`~~
+  * From the comment on [PR](https://github.com/facebook/fb.resnet.torch/pull/64), the traininig script already matched with caffe style momentum; therefore, I will train the model with `momentum  = 0.9` of SGD later.
 
 0. Based on the comparison between the loss curve I got and the one in the paper, the effective batchsize in the original paper seems like 32.
   * Based on this guess, the equivalent setting for training should be with 1) `stepsize = 80076`, 2) `gamma = 0.94`, and 3) `nEpochs = 300` when `batchsize = 64`. (It will takes approximately 60 days with 2 Titan Xs)
