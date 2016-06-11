@@ -18,7 +18,11 @@ Because of limited computational resources we have, we tried only few training c
   * trained with Titan X x 2, each of which handles effective batchsize of 32 (this information matters since batch normalization in this script does not share their normalization constants). 
   * ended when `nEpochs = 90` (It took approximately 21 days. At least 300 epoches are required to match with the results in the original paper. See, note #5)
 
-0. SGD w/ `momentum = 0.4737`, `batchsize = 32 x 2 = 64`, and learning rate scheduling with step-style where `stepsize = 25600` and `gamma = 0.96`
+0. SGD w/ `momentum = 0.9`, `batchsize = 32 x 2 = 64`, and learning rate scheduling with step-style where `stepsize = 25600` and `gamma = 0.96`
+  * trained with Titan X x 2, each of which handles effective batchsize of 32. 
+  * in progress.  
+
+0. SGD w/ `momentum = 0.9`, `batchsize = 32 x 2 = 64`, and learning rate scheduling with step-style where `stepsize = 51200` and `gamma = 0.96`
   * trained with Titan X x 2, each of which handles effective batchsize of 32. 
   * in progress.  
 
@@ -33,6 +37,7 @@ Because of limited computational resources we have, we tried only few training c
     | --------------------- | ----------- | ----------- |
     | Setting 1             | 24.407      | 7.407       |
     | Setting 2             | N/A         | N/A         |
+    | Setting 3             | N/A         | N/A         |
 
   2. Training curves on ImageNet (solid lines: 1-crop top-1 error; dashed lines: 1-crop top-5 error):
     * You can plot yourself based on the scripts in the `tools/plot_log.py`
@@ -64,11 +69,15 @@ Because of limited computational resources we have, we tried only few training c
   * Based on this guess, the equivalent setting for training should be with 1) `stepsize = 80076`, 2) `gamma = 0.94`, and 3) `nEpochs = 300` when `batchsize = 64`. (It will takes approximately 60 days with 2 Titan Xs)
   * Therefore, the decaying rate for lr of the learning rate scheduling I tried may be too fast.
 
+0. While my [PR](https://github.com/facebook/fb.resnet.torch/pull/64/files) included [`create-imagenet-lmdb.lua`](https://github.com/lim0606/fb.resnet.torch/blob/5b02c42406855192ebd45d8c2740ab90b4d5ac7e/datasets/create-imagenet-lmdb.lua) for lmdb usage, I didn't train models with lmdb. I just used the provided imagenet dataset code. See, https://github.com/lim0606/torch-inception-resnet-v2/issues/1.
+
 ## Models
 
 0. For setting 1, see [Google Drive](https://drive.google.com/folderview?id=0By3GiE-Oc72rQlJSMVZ0Ri1pb1k&usp=sharing)
 
-0. For setting 2. trainingn is in progress
+0. For setting 2, training is in progress
+
+0. For setting 3, training is in progress
 
 ## References 
 0. http://arxiv.org/abs/1602.07261
