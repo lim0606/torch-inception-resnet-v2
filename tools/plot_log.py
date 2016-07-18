@@ -9,8 +9,8 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 avg_iter = 40
 
 root_path = "/home/jaehyun/github/torch-inception-resnet-v2"
-train_log_filename = "b64_s12800_i1801710_20160519-193812-101174441.log.train"
-val_log_filename = "b64_s12800_i1801710_20160519-193812-101174441.log.test"
+train_log_filename = "cond1_b64_s12800_i1801710_20160519-193812-101174441.log.train"
+val_log_filename = "cond1_b64_s12800_i1801710_20160519-193812-101174441.log.test"
 
 train_log_path = os.path.join(root_path, 'logs', train_log_filename)
 val_log_path = os.path.join(root_path, 'logs', val_log_filename)

@@ -1,8 +1,7 @@
 #!/bin/sh
 
-filename="logs/b64_s12800_i1801710_20160519-193812-101174441.log"
-
-## perge to single log file
+## cond1
+filename="logs/cond1_b64_s12800_i1801710_20160519-193812-101174441.log"
 cat $filename"".1 $filename"".2  > $filename
 
 ## parse train 
