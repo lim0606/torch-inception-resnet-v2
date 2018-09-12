@@ -49,7 +49,7 @@ Because of limited computational resources we have, we tried only few training c
 0. There seems typos in the paper (http://arxiv.org/abs/1602.07261)
   0. In Figure 17. the number of features in the last 1x1 convolution layer for residual path (= 1154) does not fit to the one of the output of the reduction A layer (= 1152); therefore, I changed the number of features in the last 1x1 conv to 1152. 
 
-  0. In Figure 18. the number of features in 3x3 conv in the the second 1x1 conv -> 3x3 conv path (= 288) and the ones of 3x3 convs in the last path (1x1 conv -> 3x3 conv -> 3x3 conv) (= 288, 320) do not fit to the number of features in the following Inception-ResNet-C layer (= 2048); therefore, I changed them based on the model in https://gist.github.com/revilokeb/ab1809954f69d6d707be0c301947b69e
+  0. In Figure 18. the number of features in 3x3 conv in the second 1x1 conv -> 3x3 conv path (= 288) and the ones of 3x3 convs in the last path (1x1 conv -> 3x3 conv -> 3x3 conv) (= 288, 320) do not fit to the number of features in the following Inception-ResNet-C layer (= 2048); therefore, I changed them based on the model in https://gist.github.com/revilokeb/ab1809954f69d6d707be0c301947b69e
 
 0. As mentioned in the inception-v4 paper (section 3.3.), scaling down by multiplying a scalar (0.1 or somewhat equivalent) to the last neuronal activities in residual path (the activities of linear conv of residual path) for residual layer seems very important to avoid explosion.
   * Since weights are usually normalized with unit-norm, the range of output values of linear (conv) layer becomes approximately (-1, 1) (if the output values of previous layers are normalized properly with batch-normalization)
